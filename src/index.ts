@@ -19,6 +19,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issueRoutes);
 
+// Root welcome
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'DevPulse API',
+    version: '1.0.0',
+    description: 'Internal Tech Issue & Feature Tracker',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      issues: '/api/issues',
+    },
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Health check
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
