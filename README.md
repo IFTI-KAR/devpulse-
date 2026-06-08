@@ -2,7 +2,7 @@
 
 > Internal Tech Issue & Feature Tracker — a collaborative platform for software teams to report bugs, suggest features, and coordinate resolutions.
 
-**Live URL:** `https://devpulse-api.onrender.com` *(replace with your deployment URL)*
+**Live URL:** `https://devpulse-kohl-delta.vercel.app`
 
 ---
 
@@ -35,8 +35,8 @@
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/yourusername/devpulse.git
-cd devpulse
+git clone https://github.com/IFTI-KAR/devpulse-.git
+cd devpulse-
 
 # 2. Install dependencies
 npm install
@@ -155,10 +155,19 @@ src/
 
 ---
 
-## Deployment
+## Deployment to Vercel
 
-1. Push to GitHub
-2. Create a PostgreSQL database on [NeonDB](https://neon.tech) or [Supabase](https://supabase.com)
-3. Deploy to [Render](https://render.com) or [Railway](https://railway.app)
-4. Set environment variables in the platform dashboard
-5. Run `npm run db:init` once (or use the platform's shell) to create tables
+1. Push code to your GitHub repository:
+   ```bash
+   git push -u origin main
+   ```
+2. Make sure `api/index.ts` and `vercel.json` are present.
+3. Deploy to Vercel via Vercel CLI:
+   ```bash
+   vercel --prod
+   ```
+4. Set the environment variables in the Vercel project settings:
+   - `DATABASE_URL` (your NeonDB or PostgreSQL database connection string)
+   - `JWT_SECRET` (your JWT signature secret)
+   - `NODE_ENV` (`production`)
+
